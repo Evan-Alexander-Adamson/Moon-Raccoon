@@ -1,0 +1,221 @@
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #8e44ad;
+    --text-color: #ecf0f1;
+    --dark-bg: #1a1a1a;
+    --font-primary: 'sofia-pro', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    font-family: var(--font-primary);
+    font-weight: 400;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: none;
+    background: transparent;
+}
+
+.navbar {
+    position: relative;
+    z-index: 2;
+    background-color: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.hero-section {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+    pointer-events: auto;
+    transform: translateZ(50px);
+    will-change: transform;
+}
+
+.content-section {
+    position: relative;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 6rem 0;
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+.content-section > * {
+    position: relative;
+    transform: translateZ(0);
+}
+
+.track-card {
+    background: rgba(44, 62, 80, 0.3);
+    border-radius: 15px;
+    padding: 1.5rem;
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.track-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #9b59b6;
+    transform: scale(1.05);
+}
+
+.social-links a {
+    color: var(--text-color);
+    margin: 0 1rem;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section {
+        text-align: center;
+    }
+    
+    .track-card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Typography */
+h1, .display-1 {
+    font-family: var(--font-primary);
+    font-weight: 900;  /* Extra Bold */
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    font-size: 4.5rem;
+    margin-bottom: 1rem;
+}
+
+h2, h3, h4, .navbar-brand {
+    font-family: var(--font-primary);
+    font-weight: 700;  /* Bold */
+    letter-spacing: 0.01em;
+}
+
+.lead {
+    font-family: var(--font-primary);
+    font-weight: 300;  /* Light */
+    letter-spacing: 0.02em;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.navbar .nav-link {
+    font-family: var(--font-primary);
+    font-weight: 600;  /* Semi-bold */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.btn {
+    font-family: var(--font-primary);
+    font-weight: 600;  /* Semi-bold */
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.parallax-wrapper {
+    position: relative;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    perspective: 1000px;
+}
+
+.parallax-content {
+    transform-style: preserve-3d;
+    transform: translateZ(0);
+}
+
+/* Add depth to different elements */
+.hero-section h1 {
+    transform: translateZ(75px);
+    will-change: transform;
+}
+
+.hero-section .lead {
+    transform: translateZ(50px);
+    will-change: transform;
+}
+
+.hero-section .btn {
+    transform: translateZ(25px);
+    will-change: transform;
+}
+
+/* Video Showcase Section */
+.video-section {
+    padding: 0;  /* Remove padding to make video full-width */
+    background-color: rgba(0, 0, 0, 0.95);  /* Slightly darker background */
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;  /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Ensure video section has proper spacing */
+.video-section + .content-section {
+    border-top: none;  /* Remove double border */
+} 
